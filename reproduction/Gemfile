@@ -1,0 +1,6 @@
+source 'https://rubygems.org'
+
+gem 'puma', path: "../../puma"
+
+gem 'rack'
+gem 'pry-byebug'

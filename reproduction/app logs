@@ -1,0 +1,36 @@
+May 10 10:55:26 app-name heroku[web] info State changed from up to down
+May 10 10:55:26 app-name heroku[web] notice Stopping all processes with SIGTERM
+May 10 10:55:26 app-name app[web] info [3] - Gracefully shutting down workers...
+
+??? May 10 10:55:27 app-name heroku[web] notice Process exited with status 143 ???
+May 10 10:55:27 app-name heroku[router] error at=error code=H13 desc="Connection closed without response" method=GET path="/api/campaigns/<redacted>?_=<redacted>" host=<redacted> request_id=5fd95e69-df09-4762-bd47-19fcf1954a71 fwd="<redacted>" dyno=web.3 connect=0ms service=231ms status=503 bytes=0 protocol=https
+??? May 10 10:55:27 app-name heroku[web] notice Process exited with status 143  ???
+
+
+
+~ $ cat config/puma.rb
+# frozen_string_literal: true
+
+workers Integer(ENV['WEB_CONCURRENCY'] || 1)
+threads_count = Integer(ENV['MAX_THREADS'] || 2)
+threads threads_count, threads_count
+
+preload_app!
+
+rackup DefaultRackup
+port ENV['PORT'] || 3000
+environment ENV['RACK_ENV'] || 'development'
+drain_on_shutdown true
+
+MAX_THREADS=3
+WEB_CONCURRENCY=5
+
+~ $ ruby -v
+ruby 2.5.3p105 (2018-10-18 revision 65156) [x86_64-linux]
+
+
+~ $ bundler -v
+Bundler version 2.0.1
+
+
+May 10 10:42:26 app-name app[web] info agentmon: Got signal terminated. Shutting down.

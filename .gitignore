@@ -1,0 +1,6 @@
+reproduction/puma.pid
+.DS_Store
+reproduction/requests*.log
+reproduction/puma.log
+
+tmp/

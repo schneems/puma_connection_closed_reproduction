@@ -1,0 +1,8 @@
+config loaded
+Master pid 76981
+[76981] Puma starting in cluster mode...
+[76981] * Version 3.12.1 (ruby 2.6.3-p62), codename: Llamas in Pajamas
+[76981] * Min threads: 0, max threads: 16
+[76981] * Environment: development
+[76981] * Process workers: 2
+[76981] * Phased restart available
