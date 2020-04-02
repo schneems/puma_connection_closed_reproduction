@@ -55,23 +55,21 @@ $ heroku create
 Next set the buildpacks:
 
 ```
-$ heroku buildpacks
-1. https://github.com/lstoll/heroku-buildpack-monorepo
-2. heroku/ruby
+heroku buildpacks:set https://github.com/lstoll/heroku-buildpack-monorepo
+heroku buildpacks:add heroku/ruby
 ```
 
 
 You will also have to tell it that your app lives in a sub directory:
 
 ```
-$ heroku config
-APP_BASE:     reproduction
+heroku config:set APP_BASE=reproduction
 ```
 
 Deploy the app:
 
 ```
-$ get push heroku master
+$ git push heroku master
 ```
 
 Now run the reproduction script and look at your logs:
